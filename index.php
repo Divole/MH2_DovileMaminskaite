@@ -12,7 +12,7 @@ if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 } else {
     ?>
-<div id="header"><h1 style="margin: 0">Mandatory Handin MH2</h1></div>
+<div id="header"><h1 class="headings" >Mandatory Handin MH2</h1></div>
 <div id="login">
     <div id="login_form">
         <form method='post'>
