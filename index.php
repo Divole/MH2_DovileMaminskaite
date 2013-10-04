@@ -55,14 +55,16 @@ if (isset($_POST['login'])) {
         $stmt->bind_result($id);
         $stmt->fetch();
         if ($id != null) {
-//            echo "User ID: ".$id;
+
 
 
             $_SESSION['user'] = $user;
 
-            header('Location: secret.php');
+
+           header('Location: secret.php');
 
             exit;
+
         } else {
             echo "Incorect Log In inforation !!!";
         }

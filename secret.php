@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
 <head>
     <title>Log In App</title>
     <link rel="stylesheet" href="index.css">
 </head>
+<body>
 <!--<div id="header"><h1 style="margin: 0">Mandatory Handin MH2</h1 ><h5 style="margin: 0">Secret page</h5></div>-->
 <?php
 
@@ -12,3 +14,6 @@ if(isset($_SESSION['user'])){
 }else{
     echo "NOT";
 }
+?>
+</body>
+</html>
