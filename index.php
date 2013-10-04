@@ -7,6 +7,7 @@
 </head>
 <body>
 <?php
+
 $mysqli = new mysqli("localhost", "root", null, "login");
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -16,17 +17,17 @@ if ($mysqli->connect_errno) {
 <div id="login">
     <div id="login_form">
         <form method='post'>
-            User Name: <br><textarea name='user'></textarea> <br>
+            User Name: <br><input type="text" name='user'> <br>
             <?php
             if (isset($_POST['register'])) {
                 ?>
-                Email: <br><input type="email" name='user'> <br>
+                Email: <br><input type="email" name='email'> <br>
             <?php
             }
             ?>
-            Password:<br> <textarea name='password'></textarea> <br>
+            Password:<br> <input type="text" name='password'> <br>
             <?php
-            if (implode("", $_POST) != 'register') {
+            if (!isset($_POST['register'])) {
                 ?>
                 <input type='SUBMIT' value='Log In' name='login' style="cursor: pointer"> <br><br>
                 <input type="submit" value="Don't have  an account? Register" id="register" name="register">
@@ -38,7 +39,7 @@ if ($mysqli->connect_errno) {
             }
             ?>
     </div>
-</div>
+
 
 <?php
 }
@@ -71,11 +72,35 @@ if (isset($_POST['login'])) {
         $stmt->close();
 
     } else {
-        echo "Enter Log In information";
+        echo "<br><br>Enter Log In information";
     }
+}
+if(isset($_POST['register'])){
+    if ($_POST['user'] != null && $_POST['password'] != null &&  $_POST['email'] != null){
+        $user = $_POST['user'];
+        $pass = $_POST['password'];
+        $email = $_POST['email'];
+        $stmt = $mysqli->prepare("INSERT INTO `users`(`UserName`, `Password`, `Email`) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $user, $pass,$email);
+        if ($result = $stmt->execute()){
+            $stmt->free_result();
+            session_destroy();
+            header('Location: index.php');
+            exit;
+
+        }
+        else {
+            echo "error";
+        }
+
+
+
+    }
+
 }
 
 ?>
+</div>
 </body>
 </html>
 
