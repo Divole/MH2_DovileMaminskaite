@@ -2,7 +2,6 @@
 <?php session_start(); ?>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Log In App</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -80,6 +79,7 @@ if(isset($_POST['register'])){
         $email = $_POST['email'];
 
         $temp_user =  false;
+        $temp_user_used =  false;
         $temp_mail = false;
         $temp_pass = false;
         $temp_mail_used = false;
@@ -89,6 +89,7 @@ if(isset($_POST['register'])){
             $temp_user = true;
             echo "<br><br>too short";
         }
+
         //checking if password contains minimum 5 characters
         if(strlen($pass)< 5){
             $temp_pass = true;
@@ -105,14 +106,25 @@ if(isset($_POST['register'])){
         $stmt->bind_param("s", $_POST['email']);
         $stmt->execute();
         $stmt->bind_result($id);
-        if($id != null){
+        if($stmt->fetch()){
             $temp_mail_used = true;
             echo "<br><br>this email is registered.";
         }
         $stmt->close();
 
+        $user_id;
+        $s = $mysqli->prepare("SELECT id FROM users WHERE UserName=?");
+        $s->bind_param("s", $_POST['user']);
+        $s->execute();
+        $s->bind_result($user_id);
+        if($s->fetch()){
+            $temp_user_used = true;
+            echo "<br><br>this user name is taken.";
+        }
+        $s->close();
+
         //If data is valid, insert it into the database
-        if(!$temp_user && !$temp_mail && !$temp_pass && !$temp_mail_used ){
+        if(!$temp_user && !$temp_mail && !$temp_pass && !$temp_mail_used && !$temp_user_used ){
             $result = $mysqli->query("INSERT INTO `users`(`UserName`, `Password`, `Email`) VALUES ( '".$user."','".$pass."','".$email."' )");
 //            $result->bind_param("sss", $user, $pass, $email);
             if (!$result){
