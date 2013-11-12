@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body style="text-align: center">
+<div id="header"><h1 class="headings" >(MH2)Buildings </h1></div>
     <div style="border: 1px solid black; width: 50%; height: 350px; display: inline-block; margin-top: 20%">
         <form method="POST" style="text-align: left;margin: 10px">
               <?php
