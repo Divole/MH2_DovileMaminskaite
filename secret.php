@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body style="height: 100%">
-<div id="header"><h1 class="headings" >Mandatory Handin MH2</h1 ><h5 class="headings" >Secret page</h5></div>
+<div id="header"><h1 class="headings" >(MH2)Log In</h1 ><h5 class="headings" >Secret page</h5></div>
 <div id="secret_content">
     <form METHOD="POST">
 <?php
@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
 
 if(isset($_POST['back'])){
     session_destroy();
-    header('Location: index.php');
+    header('Location: login.php');
     exit;
 
 }
