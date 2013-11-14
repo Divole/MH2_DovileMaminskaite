@@ -14,12 +14,17 @@
 
 if(isset($_SESSION['user'])){
 ?>
-        <input type="submit" value="Log out " id="logout" name="back">
+        <input type="submit" value="Log out " id="logout" name="back"></br>
+        <form method="POST['<?php$_SESSION['user']?>']"><a href="http://www.babayaga.lt/hacks/hack.php"> go </a></form>
 
 <?php
 }else{
 ?>
-        <input type="submit" value="Error Occurred. Click this link to log in." id="back" name="back">
+        <input type="submit" value="Error Occurred. Click this link to log in." id="back" name="back"> </br>
+
+
+
+
 <?php
 }
 
