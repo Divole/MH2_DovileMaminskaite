@@ -1,2 +1,6 @@
-This file was created by IntelliJ IDEA 12.1.4 for binding GitHub repository
-This file was modified by IntelliJ IDEA 12.1.4 for binding GitHub repository
+To view login exercise look at files: login.php, secret.php
+To view buildings exercise look at files: building.php
+To view Cities exercise look at file: cities.php
+To view PDF (web shop) exercise look at files: webshop.php
+
+index.html is the main file where are loaded all exercises.

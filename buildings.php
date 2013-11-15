@@ -6,7 +6,7 @@
 </head>
 <body style="text-align: center">
 <div id="header"><h1 class="headings" >(MH2)Buildings </h1></div>
-    <div style="border: 1px solid black; width: 50%; height: 350px; display: inline-block; margin-top: 20%">
+    <div class="bg" style="border: 1px solid black; width: 50%; height: 350px; display: inline-block; margin-top: 30%">
         <form method="POST" style="text-align: left;margin: 10px">
               <?php
               $buildings_array = array('Red Building', 'Tree House', 'Fraternity Crib', 'Utility Baracks', 'Oak Complex');
